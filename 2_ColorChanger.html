@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Color Changer</title>
+  <style>
+    body {
+      text-align: center;
+      padding-top: 100px;
+      font-family: Arial, sans-serif;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Random Background Color Changer</h1>
+  <button id="changeColorBtn">Change Color</button>
+
+  <script>
+    // Function to generate random color
+    function getRandomColor() {
+      const r = Math.floor(Math.random() * 256);
+      const g = Math.floor(Math.random() * 256);
+      const b = Math.floor(Math.random() * 256);
+      return `rgb(${r}, ${g}, ${b})`;
+    }
+
+    // Access button using BOM (document is part of BOM)
+    const button = document.getElementById('changeColorBtn');
+
+    // Add event listener
+    button.addEventListener('click', function() {
+      const randomColor = getRandomColor();
+      document.body.style.backgroundColor = randomColor; // Change BG color
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+
+  
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slider</title>
+    <style>
+      /* Container for the image slider */
+      .slider-container {
+        position: relative;
+        max-width: 100%;
+        margin: auto;
+      }
+  
+      /* Hide images by default */
+      .slider-images {
+        display: none;
+        width: 100%;
+      }
+  
+      /* Navigation buttons */
+      .prev, .next {
+        position: absolute;
+        top: 50%;
+        font-size: 18px;
+        padding: 16px;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: none;
+        cursor: pointer;
+        z-index: 100;
+      }
+  
+      .prev {
+        left: 0;
+      }
+  
+      .next {
+        right: 0;
+      }
+  
+      .prev:hover, .next:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+      }
+    </style>
+  </head>
+  <body>
+  
+    <div class="slider-container">
+      <!-- Images -->
+      <img class="slider-images" src="https://via.placeholder.com/600x300/FF5733/fff?text=Image+1" alt="Image 1">
+      <img class="slider-images" src="https://via.placeholder.com/600x300/33C1FF/fff?text=Image+2" alt="Image 2">
+      <img class="slider-images" src="https://via.placeholder.com/600x300/75FF33/fff?text=Image+3" alt="Image 3">
+
+    <!-- Prev and Next Buttons -->
+    <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+    <button class="next" onclick="moveSlide(1)">&#10095;</button>
+  </div>
+
+  <script>
+    let slideIndex = 0;
+
+    function showSlides() {
+      const slides = document.querySelectorAll('.slider-images');
+      if (slideIndex >= slides.length) slideIndex = 0;
+      if (slideIndex < 0) slideIndex = slides.length - 1;
+
+      // Hide all images
+      slides.forEach(slide => slide.style.display = 'none');
+
+      // Show the current image
+      slides[slideIndex].style.display = 'block';
+    }
+
+    function moveSlide(n) {
+      slideIndex += n;
+      showSlides();
+    }
+
+    // Initialize the slider
+    showSlides();
+  </script>
+
+</body>
+</html>

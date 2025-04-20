@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple Form Validation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 50px;
+      max-width: 400px;
+      margin: auto;
+    }
+    input, button {
+      display: block;
+      margin-bottom: 15px;
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+    }
+    .error {
+      color: red;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Simple Form</h2>
+  <form id="myForm">
+    <input type="text" id="name" placeholder="Enter your name" />
+    <span class="error" id="nameError"></span>
+
+    <input type="email" id="email" placeholder="Enter your email" />
+    <span class="error" id="emailError"></span>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    const form = document.getElementById('myForm');
+    const nameInput = document.getElementById('name');
+    const emailInput = document.getElementById('email');
+    const nameError = document.getElementById('nameError');
+    const emailError = document.getElementById('emailError');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent actual form submission
+
+      let isValid = true;
+
+      // Clear previous errors
+      nameError.textContent = '';
+      emailError.textContent = '';
+
+      // Validate name
+      if (nameInput.value.trim() === '') {
+        nameError.textContent = 'Name is required';
+        isValid = false;
+      }
+
+      // Validate email
+      if (emailInput.value.trim() === '') {
+        emailError.textContent = 'Email is required';
+        isValid = false;
+      } else if (!emailInput.value.includes('@')) {
+        emailError.textContent = 'Enter a valid email';
+        isValid = false;
+      }
+
+      if (isValid) {
+        alert('Form submitted successfully!');
+        form.reset(); // Clear the form
+      }
+    });
+  </script>
+</body>
+</html>
